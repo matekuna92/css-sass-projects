@@ -7,15 +7,14 @@ Dark green: #28b485
 
 */
 
-* {
+*, ::after, ::before {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-
+    box-sizing: inherit;
 }
 
 html {
-    font-size: 10px;
+    font-size: 62.5%;    /* percentage relative to userAgent browser default(16px) font-size - 10/16 = 0.625 */
 }
 
 body {
@@ -26,6 +25,7 @@ body {
     color: #777;
     /* padding: 30px; */
     padding: 3rem;
+    box-sizing: border-box;
 }
 
 .header {
@@ -37,17 +37,17 @@ body {
     position: relative;
 }
 
-.logo-box {
+.header__logo-box {
     position: absolute;
     top: 4rem;
     left: 4rem;
 }
 
-.logo {
+.header__logo {
     height: 3.5rem;
 }
 
-.text-box {
+.header__text-box {
     position: absolute;
     top: 40%;   /* because of clip pathing, centering with 50-50% looks weird, so we can use 40% */
     left: 50%;
@@ -62,7 +62,7 @@ body {
     margin-bottom: 6rem;
 }
 
-.heading-primary-main {
+.heading-primary--main {
     display: block;
     font-size: 6rem;
     font-weight: 700;
@@ -71,7 +71,7 @@ body {
     animation-timing-function: ease-out;
 }
 
-.heading-primary-sub {
+.heading-primary--sub {
     display: block;
     font-size: 2rem;
     font-weight: 700;
@@ -130,7 +130,7 @@ body {
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.25);
 }
 
-.btn-white {
+.btn--white {
     background: #fff;
     color: #777;
 }
@@ -169,7 +169,7 @@ body {
     }
 }
 
-.btn-animated {
+.btn--animated {
     animation: moveInBottom 1s ease-out .75s;
     animation-fill-mode: backwards;
 }
