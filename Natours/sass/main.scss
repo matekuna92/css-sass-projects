@@ -4,6 +4,7 @@ $color-primary-light:  #7ed56f;
 $color-primary-dark: #28b485;
 $color-grey-dark: #777;
 $color-white: #fff;
+$color-black: #000;
 
 *, ::after, ::before {
     margin: 0;
@@ -33,24 +34,24 @@ body {
     background-position: top;
     clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%); /* specifying corners positions clockwise: top left, top right, , bottom right, bottom left corner */
     position: relative;
-}
 
-.header__logo-box {
-    position: absolute;
-    top: 4rem;
-    left: 4rem;
-}
+    &__logo-box {
+        position: absolute;
+        top: 4rem;
+        left: 4rem;
+    }
 
-.header__logo {
-    height: 3.5rem;
-}
+    &__logo {
+        height: 3.5rem;
+    }
 
-.header__text-box {
-    position: absolute;
-    top: 40%;   /* because of clip pathing, centering with 50-50% looks weird, so we can use 40% */
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+    &__text-box {
+        position: absolute;
+        top: 40%;   /* because of clip pathing, centering with 50-50% looks weird, so we can use 40% */
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
 }
 
 .heading-primary {
@@ -58,23 +59,23 @@ body {
     text-transform: uppercase;
     backface-visibility: hidden; /* fixing that at the end of animation element moves up a bit */
     margin-bottom: 6rem;
-}
 
-.heading-primary--main {
-    display: block;
-    font-size: 6rem;
-    font-weight: 700;
-    letter-spacing: 3.5rem;
-    animation: moveInLeft 1s;
-    animation-timing-function: ease-out;
-}
+    &--main {
+        display: block;
+        font-size: 6rem;
+        font-weight: 700;
+        letter-spacing: 3.5rem;
+        animation: moveInLeft 1s;
+        animation-timing-function: ease-out;
+    }
 
-.heading-primary--sub {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1.75rem;
-    animation: moveInRight 1s ease-out;
+    &--sub {
+        display: block;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 1.75rem;
+        animation: moveInRight 1s ease-out;
+    }
 }
 
 /* for browser performance it's best to animate only 2 properties: 
@@ -107,53 +108,60 @@ body {
     }
 }
 
-.btn:link, .btn:visited {
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 1.5rem 4rem;
-    display: inline-block; /*  btn is inline element as deafult, but this way the box model works on this element as if it was a normal block element */
-    border-radius: 10rem;
-    transition: all .2s;     /* all properties are allowed to be animated, transition always has to be on the initial state */
-    position: relative;
-    font-size: 16px; /* original font-size, user agent using16px, before we set rem units */
-}
+.btn {
+    &:link, &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        display: inline-block; /*  btn is inline element as deafult, but this way the box model works on this element as if it was a normal block element */
+        border-radius: 10rem;
+        transition: all .2s;     /* all properties are allowed to be animated, transition always has to be on the initial state */
+        position: relative;
+        font-size: 16px; /* original font-size, user agent using16px, before we set rem units */
+    }
 
-.btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.25);
-}
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.25);
 
-.btn:active {
-    transform: translateY(-1px);
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.25);
-}
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+    }
 
-.btn--white {
-    background: $color-white;
-    color: $color-grey-dark;
-}
+    &:active {
+        transform: translateY(-1px);
+        box-shadow: 0 0.5rem 1rem rgba($color-black, 0.25);
+    }
 
-/* pseudo element acts like a child of the element, so the 100% width and height refers to the button sizes */
-.btn::after {
-    content: '';
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-    border-radius: 10rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition: all 0.4s;
-}
+    &--white {
+        background: $color-white;
+        color: $color-grey-dark;
 
-.btn-white::after {
-    background: $color-white;
-}
+        &::after {
+            background: $color-white;
+        }
+    }
 
-.btn:hover::after {
-    transform: scaleX(1.4) scaleY(1.6);
-    opacity: 0;
+    /* pseudo element acts like a child of the element, so the 100% width and height refers to the button sizes */
+    &::after {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all 0.4s;
+    }
+
+     &--animated {
+        animation: moveInBottom 1s ease-out .75s;
+        animation-fill-mode: backwards;
+    }
 }
 
 @keyframes moveInBottom {
@@ -166,9 +174,3 @@ body {
         transform: translate(0);
     }
 }
-
-.btn--animated {
-    animation: moveInBottom 1s ease-out .75s;
-    animation-fill-mode: backwards;
-}
-
