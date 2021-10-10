@@ -1,0 +1,55 @@
+.btn {
+    &:link, &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        display: inline-block; /*  btn is inline element as deafult, but this way the box model works on this element as if it was a normal block element */
+        border-radius: 10rem;
+        transition: all .2s;     /* all properties are allowed to be animated, transition always has to be on the initial state */
+        position: relative;
+        font-size: 16px; /* original font-size, user agent using16px, before we set rem units */
+    }
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.25);
+
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+    }
+
+    &:active {
+        transform: translateY(-1px);
+        box-shadow: 0 0.5rem 1rem rgba($color-black, 0.25);
+    }
+
+    &--white {
+        background: $color-white;
+        color: $color-grey-dark;
+
+        &::after {
+            background: $color-white;
+        }
+    }
+
+    /* pseudo element acts like a child of the element, so the 100% width and height refers to the button sizes */
+    &::after {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all 0.4s;
+    }
+
+     &--animated {
+        animation: moveInBottom 1s ease-out .75s;
+        animation-fill-mode: backwards;
+    }
+}
