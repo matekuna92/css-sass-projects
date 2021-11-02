@@ -1,12 +1,10 @@
 .card {
     perspective: 150rem; // perspective should be defined in the parent element, where the transition defined
     position: relative;
-    height: 50rem; //* have to give the same height as card__side element
+    height: 52rem; //* have to give the same height as card__side element
 
     &__side {
-        color: #fff;
-        font-size: 2rem;
-        height: 50rem;
+        height: 52rem;
         transition: all .8s ease;
         // similar to float: with absolute positioning we take the element out of the flow, so parent's will collapse and lose its height
         // for float clearfix solves the problem, theres no clearfix for absolute positioning*
@@ -16,6 +14,7 @@
         width: 100%;
         backface-visibility: hidden;
         border-radius: 3px;
+        overflow: hidden;   // card image overlaps the parent at the corners, so we need to hide the overflow to keep the border-radius under the image on the parent element
         box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
 
         &--front {
@@ -41,10 +40,84 @@
     }
 
     &:hover &__side--front {
-        transform: rotateY(180deg);
+        transform: rotateY(-180deg);
     }
 
     &:hover &__side--back {
         transform: rotateY(0);  // on hover the back side goes back to 0deg
+    }
+
+    &__picture {
+        background-size: cover;
+        height: 25rem;
+        background-blend-mode: screen;
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+
+        &--1 {
+            background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark),
+            url(../img/nat-5.jpg);    // 1 folder up FROM the CSS folder, which will be the final style location!
+        }
+
+        &--2 {
+            background-image: linear-gradient(to right bottom, #7ed56f, #28b485),
+            url(../img/nat-6.jpg);   // 1 folder up FROM the CSS folder, which will be the final style location!
+
+        }
+        
+        &--3 {
+            background-image: linear-gradient(to right bottom, #2998ff, #5643fa),
+            url(../img/nat-7.jpg);   // 1 folder up FROM the CSS folder, which will be the final style location!
+        }
+    }
+
+    &__heading {
+        font-size: 2.8rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        color: $color-white;
+        position: absolute;
+        top: 12rem;
+        right: 2rem;
+        text-align: right;
+    }
+
+    &__heading-span {
+        padding: 1rem 1.5rem;
+        -webkit-box-decoration-break: clone;
+
+        &--1 {
+            background-image: linear-gradient(to right bottom, rgba($color-secondary-light, .85),
+                rgba($color-secondary-dark, .85));
+        }
+
+        &--2 {
+            background-image: linear-gradient(to right bottom, rgba($color-secondary-light, .85),
+                rgba($color-secondary-dark, .85));
+        }
+
+        &--3 {
+            background-image: linear-gradient(to right bottom, rgba($color-secondary-light, .85),
+                rgba($color-secondary-dark, .85));
+        }
+    }
+
+    &__details {
+        padding: 2rem;
+
+        ul {
+            list-style: none;
+            width: 80%;
+            margin: 0 auto; // simplest for centering a block element inside block element
+
+            li {
+                text-align: center;
+                font-size: 1.5rem;
+                padding: 1rem;
+
+                &:not(:last-child) {
+                    border-bottom: 1px solid $color-grey-light-2;
+                }
+            }
+        }
     }
 }
