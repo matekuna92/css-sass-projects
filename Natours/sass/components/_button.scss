@@ -34,6 +34,15 @@
         }
     }
 
+    &--green {
+        background: $color-primary;
+        color: $color-white;
+
+        &::after {
+            background: $color-primary;
+        }
+    }
+
     /* pseudo element acts like a child of the element, so the 100% width and height refers to the button sizes */
     &::after {
         content: '';
