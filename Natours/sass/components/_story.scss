@@ -2,7 +2,7 @@
     width: 75%;
     margin: 0 auto;
     box-shadow: 0 3rem 6rem rgba($color-black, .1);
-    background-color: $color-white;
+    background-color: rgba($color-white, .6);
     border-radius: 3px;
     padding: 6rem;
     padding-left: 9rem; // after translating the circle with -3rem, the story box isnt centered, circle moved to the left edge of box(-3rem), so need extra padding: 6rem + 3rem = 9rem
