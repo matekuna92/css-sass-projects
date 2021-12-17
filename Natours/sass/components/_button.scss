@@ -1,5 +1,5 @@
 .btn {
-    &:link, &:visited {
+    &:link, &:visited, & {
         text-transform: uppercase;
         text-decoration: none;
         padding: 1.5rem 4rem;
@@ -7,7 +7,12 @@
         border-radius: 10rem;
         transition: all .2s;     /* all properties are allowed to be animated, transition always has to be on the initial state */
         position: relative;
-        font-size: 16px; /* original font-size, user agent using16px, before we set rem units */
+        font-size: $default-font-size; /* original font-size, user agent using16px, before we set rem units */
+
+        // change for the <button> element
+        // style only applies for link and visited pseudo class, original btn--green was an <a> html tag earlier, we need to extend selector with "&", so style applies to button elements as well
+        border: none;
+        cursor: pointer;
     }
 
     &:hover {
@@ -20,7 +25,7 @@
         }
     }
 
-    &:active {
+    &:active, &:focus {
         transform: translateY(-1px);
         box-shadow: 0 0.5rem 1rem rgba($color-black, 0.25);
     }
