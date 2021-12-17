@@ -1,0 +1,51 @@
+.form {
+
+    &__group:not(:last-child) {
+        margin-bottom: 2rem;
+    }
+
+    &__label {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-top: .7rem;
+        display: block;
+        transition: all .3s;
+    }
+
+    &__input {
+        font-size: 1.5rem;
+        font-family: inherit;
+        color: inherit;
+        padding: 1.5rem 2rem;
+        border-radius: 2px;
+        background-color: rgba($color-white, .5);
+        border: none;
+        border-bottom: 3px solid transparent; // border to the initial state as well, otherwise when focused, label text moves down a bit because of the 3px border added on focus
+        width: 90%;
+        display: block;
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 1rem 2rem rgba($color-black, .1);
+            border-bottom: 3px solid $color-primary; // for accessibility reasons, users need to know which form elements are focused
+        }
+
+        // orange border, when input is invalid
+        &:focus:invalid {
+            border-bottom: 3px solid $color-secondary-dark;
+        }
+
+        // placeholder pseudo element!
+        &::-webkit-input-placeholder {
+            color: $color-grey-dark-2;
+        }
+    }
+
+    // when the placholder is shown (we didnt write anything in the input yet, label should be hidden
+    &__input:placeholder-shown + &__label {
+        opacity: 0;     // opacity can be animated, visibility cant
+        visibility: hidden; // if we only set opacity, element would still be on the page, but only invisible
+        transform: translateY(-4rem);
+    }
+    
+}
