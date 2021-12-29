@@ -5,7 +5,20 @@
 }
 
 html {
-    font-size: 62.5%;    /* percentage relative to userAgent browser default(16px) font-size - 10/16 = 0.625 */
+    font-size: 62.5%;    /* 1rem = 10px! percentage is relative to userAgent browser default(16px) font-size - 10/16 = 0.625 */
+
+    // the lines we define here will be the @content at the mixin scss, then mixin inserts the styles to css
+    @include respond(tab-landscape) {       // width < 1200 ?
+        font-size: 56.25%;     // we will use 1 rem - 9px: 9/16 = 0.5625
+    }
+
+    @include respond(tab-portrait) {        // width < 900 ?
+        font-size: 50%;     // I want 1 rem to be 8px, so: 8/16 = 0.5. Now each style using rem will adjust, so 4rem padding instead of 40px it will be 4x8px = 32px!
+    }
+
+    @include respond(big-desktop) {
+        font-size: 75%;     // let 1 rem be 12px, so: 12/16 = 0.75
+    }
 }
 
 body {
