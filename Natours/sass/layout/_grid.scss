@@ -5,8 +5,17 @@
     /* background-color: #eee; */
     margin: 0 auto;
 
+    @include respond(tab-portrait) {
+        max-width: 50rem;   // ($grid-width is originally 114rem)
+        padding: 0 3rem;
+    }
+
     &:not(:last-child) {
         margin-bottom: $gutter-vertical;
+
+        @include respond(tab-portrait) {
+            margin-bottom: $gutter-vertical-small;
+        }
     }
 
     @include clearfix;
@@ -17,6 +26,15 @@
 
         &:not(:last-child) {
             margin-right: $gutter-horizontal;
+
+            @include respond(tab-portrait) {
+                margin-right: 0;
+                margin-bottom: $gutter-vertical-small;
+            }
+        }
+
+        @include respond(tab-portrait) {
+            width: 100% !important;
         }
     }
 
