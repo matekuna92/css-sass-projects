@@ -85,7 +85,9 @@
 
     &__heading-span {
         padding: 1rem 1.5rem;
+        -moz-box-decoration-break: clone;
         -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
 
         &--1 {
             background-image: linear-gradient(to right bottom, rgba($color-secondary-light, .85),
@@ -93,13 +95,13 @@
         }
 
         &--2 {
-            background-image: linear-gradient(to right bottom, rgba($color-secondary-light, .85),
-                rgba($color-secondary-dark, .85));
+            background-image: linear-gradient(to right bottom, rgba($color-primary-light, .85),
+                rgba($color-primary-dark, .85));
         }
 
         &--3 {
-            background-image: linear-gradient(to right bottom, rgba($color-secondary-light, .85),
-                rgba($color-secondary-dark, .85));
+            background-image: linear-gradient(to right bottom, rgba($color-tertiary-light, .85),
+                rgba($color-tertiary-dark, .85));
         }
     }
 
