@@ -510,7 +510,20 @@
 
             <div class="footer__logo-box">
 
-                <img src="img/logo-green-2x.png" alt="" class="footer__logo">
+                <!-- "art direction": uses 1 image on 1 screen width, and use another on another screen width -->
+                <picture class="footer__logo">
+
+                    <!-- in picture element we can define multiply sources for 1 image: 
+                    in source element we can write media query like in CSS -->
+
+                    <!-- use this img sourseset, if screenwidth < 37.5em, if not, use the second one -->
+                    <source srcset="img/logo-green-small-1x.png 1x, img/logo-green-small-2x.png 2x" media="(max-width: 37.5em)">
+                    <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="Full logo">
+                </picture>
+
+                <!-- 1x img should be used for low resolution screen, 2x size for high res. screen resolution
+                high res. screen uses 2x to display 1 px, so it will have double widht, height. "density switching" -->
+                <!-- <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="Full logo"> -->
 
             </div>
 
