@@ -31,7 +31,9 @@
 
     // apple's retina screen resolution is 192 used as reference
     // 2x screen + above mobile screen size, then use the hero image, on mobile (<600) use the small image
-    @media(min-resolution: 192dpi) and (min-width: 600px), (min-width: 2000px) {
+
+    // media queries are always "em" unit, 16px is the browser default: instead of 600px we use: 600/16 = 37.5em
+    @media(min-resolution: 192dpi) and (min-width: 37.5em), (min-width: 125em) {
         background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)),
             url("../img/hero.jpg");
     }
