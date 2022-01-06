@@ -1,6 +1,7 @@
 .header {
     height: 95vh;
-    background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)), url("../img/hero.jpg");
+    background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)),
+        url("../img/hero-small.jpg");
     background-size: cover;
     background-position: top;
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); /* specifying corners positions clockwise: top left, top right, , bottom right, bottom left corner */
@@ -26,5 +27,12 @@
 
     @include respond(phone) {
         clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+    }
+
+    // apple's retina screen resolution is 192 used as reference
+    // 2x screen + above mobile screen size, then use the hero image, on mobile (<600) use the small image
+    @media(min-resolution: 192dpi) and (min-width: 600px), (min-width: 2000px) {
+        background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)),
+            url("../img/hero.jpg");
     }
 }
