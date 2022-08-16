@@ -1,12 +1,17 @@
 .header {
-    height: 95vh;
+    height: 85vh;   // if clip path not supported⋆
     background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)),
         url("../img/hero-small.jpg");   // load the small image on small resolution screen
     background-size: cover;
     background-position: top;
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); /* specifying corners positions clockwise: top left, top right, , bottom right, bottom left corner */
     position: relative;
+
+    // ⋆we need to fix, where clip path property doesnt work. use 95vh, only if supported
+    @supports(clip-path: polygon(0 0) or (-webkit-clip-path: polygon(0 0))) {   // values doesnt matter here
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); /* specifying corners positions clockwise: top left, top right, , bottom right, bottom left corner */
+        clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+        height: 95vh;
+    }
 
     &__logo-box {
         position: absolute;

@@ -28,11 +28,19 @@
         width: 15rem;
         height: 15rem;
         float: left;
-        // shape-outside defines where the content floats around the element
-        shape-outside: circle(50% at 50% 50%); // shape-outside only works if the element is floated AND also has widht + height
-        clip-path: circle(50% at 50% 50%);  // to make element actually look like a circle
         transform: translateX(-3rem) skewX(12deg);   // on floated elements it's best not to use margins
         position: relative;
+        overflow: hidden;
+        border-radius: 50%;     // if clip-path not supported, else it uses the clip-path inside @supports 
+
+        @supports(clip-path: polygon(0 0) or (-webkit-clip-path: polygon(0 0))) {
+            -webkit-clip-path: circle(50% at 50% 50%);
+            clip-path: circle(50% at 50% 50%);      // // to make element actually look like a circle
+            // shape-outside defines where the content floats around the element
+            -webkit-shape-outside: circle(50% at 50% 50%); // shape-outside only works if the element is floated AND also has widht + height
+            shape-outside: circle(50% at 50% 50%); // shape-outside only works if the element is floated AND also has widht + height
+            border-radius: none;
+        }
 
         @include respond(phone) {
             transform: translateX(-3rem) skewX(0);
