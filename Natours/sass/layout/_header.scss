@@ -1,9 +1,10 @@
 .header {
     height: 95vh;
     background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)),
-        url("../img/hero-small.jpg");
+        url("../img/hero-small.jpg");   // load the small image on small resolution screen
     background-size: cover;
     background-position: top;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); /* specifying corners positions clockwise: top left, top right, , bottom right, bottom left corner */
     position: relative;
 
@@ -25,6 +26,13 @@
         text-align: center;
     }
 
+    // 192 dpi is the apple resolution of the retina screen, which used as a reference usually
+    @media(min-resolution: 192dpi) and (min-width:37.5em), (min-width:125em) {
+        background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)),
+        url("../img/hero.jpg");     // load the normal image on high resolution screen, and larger screen, than mobile
+        // we dont need 2000px wide image on small screens
+    }
+  
     @include respond(phone) {
         clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
     }
