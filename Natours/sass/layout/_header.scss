@@ -32,9 +32,9 @@
     }
 
     // 192 dpi is the apple resolution of the retina screen, which used as a reference usually
-    @media(min-resolution: 192dpi) and (min-width:37.5em), 
-        (-webkit-min-device-pixel-ratio: 2) and (min-width:37.5em), // fix for safari for not displaying the higher image first
-        (min-width:125em) {
+    @media only screen and (min-resolution: 192dpi) and (min-width:37.5em), 
+        only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width:37.5em), // fix for safari for not displaying the higher image first
+        only screen and (min-width:125em) {
             background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)),
             url("../img/hero.jpg");     // load the normal image on high resolution screen, and larger screen, than mobile
             // we dont need 2000px wide image on small screens

@@ -151,46 +151,50 @@
     }
 
     // rewrite card on tab/mobile, where there is no hover effect: card back will be displayed on the front on a bigger card
-    @include respond(tab-portrait) {
-        height: auto; //* have to give the same height as card__side element
-        border-radius: 3px;
-        background-color: $color-white;
-        box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
-    
-        &__side {
-            height: auto;
-            position: relative; // we no longer have 2 side occupying the same space 
-            box-shadow: none; // removing original shadow, now it have to applies for the whole card element, not just the __side as originally
-    
-            &--back {
-                transform: rotateY(0); // same default state as front card now
-                clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+  /// to@include respond(tab-portrait) {
+    @media only screen and (max-width: 56.25em),
+        only screen and (hover:none) {      // it fixes the 3card layout, have to specify that card should appear
+            // with the backside, when:
+            // screen is lower than this, OR it's a device without hover
+            height: auto; //* have to give the same height as card__side element
+            border-radius: 3px;
+            background-color: $color-white;
+            box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+        
+            &__side {
+                height: auto;
+                position: relative; // we no longer have 2 side occupying the same space 
+                box-shadow: none; // removing original shadow, now it have to applies for the whole card element, not just the __side as originally
+        
+                &--back {
+                    transform: rotateY(0); // same default state as front card now
+                    clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+                }
+            }
+        
+            &:hover &__side--front {
+                transform: rotateY(0);  // front side now shouldnt rotate here
+            }
+
+            &__details {
+                padding: 0 3rem;
+            }
+        
+            &__call-to-action {
+                position: relative;
+                top: 0;
+                left: 0;
+                transform: translate(0);
+                width: 100%;
+                padding: 7rem 4rem 4rem 4rem;
+            }
+        
+            &__price-box {
+                margin-bottom: 3rem;
+            }
+        
+            &__price-value {
+                font-size: 4rem;
             }
         }
-    
-        &:hover &__side--front {
-            transform: rotateY(0);  // front side now shouldnt rotate here
-        }
-
-        &__details {
-            padding: 0 3rem;
-        }
-    
-        &__call-to-action {
-            position: relative;
-            top: 0;
-            left: 0;
-            transform: translate(0);
-            width: 100%;
-            padding: 7rem 4rem 4rem 4rem;
-        }
-    
-        &__price-box {
-            margin-bottom: 3rem;
-        }
-    
-        &__price-value {
-            font-size: 4rem;
-        }
-    }
 }
