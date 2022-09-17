@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlexBox</title>
+    
+    <style>
+
+        * {
+            margin:0;
+            padding: 0;
+        }
+
+        .container {
+            background: #ccc;
+            padding: 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .item {
+            background: red;
+            padding: 30px;
+            margin: 10px;
+            color: #fff;
+            font-size: 40px;
+            /*  flex: 1; */
+        }
+
+        .i2 {
+            height: 100px;
+            /*  flex: 3; /* shorthand for flex:grow */
+            flex-basis: 300px; /* if we dont declare flex-shrink property, it doesnt matter if we set 300px basis, on smaller screen this element will also shrink, because it will
+            has less space.. */
+            flex-shrink: 0; /* element no longer allowed to shrink on small screen */
+         /*   flex: 0 0 300px;  flex shorthand for grow, shrink, basis in one line */
+        }
+
+        .i4 {
+            align-self: flex-end;
+            order: -1;
+        }
+
+        .i3 {
+            order: -2;
+            flex: 1;
+        }
+
+        .i1 {
+            order: 1;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="item i1">1</div>
+        <div class="item i2">2</div>
+        <div class="item i3">3</div>
+        <div class="item i4">4</div>
+        <div class="item">5</div>
+    </div>
+    
+</body>
+</html>
