@@ -1,3 +1,5 @@
+///// HEADER
+
 .logo {
     height: 3.25rem;
     margin-left: 2rem;
@@ -111,4 +113,27 @@
     &__user-name {
 
     }
+}
+
+///// SIDE NAVIGATION
+.side-nav {
+    &_item {
+
+    }
+
+    &__link {
+
+    }
+
+    &__icon {
+        width: 1.75rem;
+        height: 1.75rem;
+    }
+}
+
+.legal {
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 2.5rem;
+    color: var(--colo-grey-light-4);
 }
