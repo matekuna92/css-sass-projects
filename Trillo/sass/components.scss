@@ -189,32 +189,102 @@
 
 /* OVERVIEW */
 .overview {
-    &__heading {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--color-grey-light-2);
 
+    &__heading {
+        font-size: 2.25rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 1.5rem 3rem;
     }
 
     &__stars {
-
+        /*flex: 1;  - it would occupy all available space inside flexbox, but this would cause problems for example when
+        when hovering the stars, all the space would be hovered too */
+        margin-right: auto;     /* element still looks like occupying all available space, but now it has margin,
+        so the "stars" element has the size of content now instead of all the available space */
+        display: flex; /* svg-s are similar to text, that produces whitespace... 
+        display flex fixes little space under each star item, they werent perfectly aligned vertically */
     }
 
     &__icon-star,
     &__icon-location {
-
+        width: 1.75rem;
+        height: 1.75rem;
+        fill: var(--color-primary);
     }
 
     &__location {
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+    }
 
+    &__icon-location {
+        margin-right: .5rem;
     }
 
     &__rating {
-
+        background-color: var(--color-primary);
+        margin-left: 3rem;
+        color: #fff;
+        align-self: stretch;
+        padding: 0 2.25rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     &__rating-average {
-
+        font-size: 2.75rem;
+        font-weight: 300;
+        margin-bottom: -5px;
     }
 
     &__rating-count {
-        
+        font-size: .8rem;
+        text-transform: uppercase;
+    }
+}
+
+/* BUTTON INLINE */
+.btn-inline {
+    border: none;
+    color: var(--color-primary);
+    font-size: inherit;
+    border-bottom: 1px solid currentColor; /* border will have the exact same, as the current text in that area */
+    padding-bottom: 2px;
+    display: inline-block;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all .2s;
+    
+    &:hover {
+        color: var(--color-grey-dark-1); /* border also becomes the same color as the text color. Without currentColor we 
+                                            would need one more line for hover: border-bottom: color-grey... */
+    }
+
+    &:focus {
+        outline: none;
+        animation: pulsate 1s infinite;
+    }
+
+    @keyframes pulsate {
+        0% {
+            transform: scale(1);
+            box-shadow: none;
+        }
+        50% {
+            transform: scale(1.2);
+            box-shadow: 0 1rem 4rem rgba(0, 0, 0, .25);
+        }
+        100% {
+            transform: scale(1);
+            box-shadow: none;
+        }
     }
 }

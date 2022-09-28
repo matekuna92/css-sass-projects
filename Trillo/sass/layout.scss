@@ -10,7 +10,7 @@
     font-size: 1.4rem; /*body font-size was too small, so elements with inherit in components scss now inherits from header, not from body */
     height: 7rem;
     background-color: #fff;
-    border-bottom: var(--color-grey-light-2);
+    border-bottom: 1px solid var(--color-grey-light-2);
     display: flex;
     justify-content: space-between;
     align-items: center;
