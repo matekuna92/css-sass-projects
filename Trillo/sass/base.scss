@@ -35,6 +35,11 @@ Grey dark 3: #999
     --box-shadow-light: 0 2rem 5rem rgba(0, 0, 0, .08);
 }
 
+    $bp-largest: 75em;  // 1200px - 1200/16 = 75
+    $bp-large: 68.75em; // 1100 / 16 = 68.75  (1100 was the breakpoint where text was too big, and appeared in new line
+    $bp-medium: 56.25em;        // breakpoint at 900px: 900/16 =
+    
+
 * {
     margin: 0;
     padding: 0;
@@ -47,6 +52,12 @@ Grey dark 3: #999
 html {
     box-sizing: border-box;
     font-size: 62.5%;   // 1rem = 10px -> 10px/16px (16px is the browser default) = 62.5
+
+    @media only screen and (max-width: $bp-large) {
+        font-size: 50%; // 8px - 8/16 = 50
+            // since font-size is 8px now, the container which has: max-width: 120rem size also decreased, so it didnt cover the whole page width now
+            // 120*8 = container is 960px wide now.. have to fix with max-width, width in the layout scss // *
+        }
 }
 
 body {

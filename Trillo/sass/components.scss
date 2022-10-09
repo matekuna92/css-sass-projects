@@ -117,11 +117,24 @@
     list-style: none;
     margin-top: 3.5rem;
 
+    @media only screen and (max-width: $bp-medium) { 
+        display: flex;
+        margin: 0;
+    }
+
     &__item {
         position: relative;
 
         &:not(:last-child) {
             margin-bottom: .5rem;
+
+            @media only screen and (max-width: $bp-medium) { 
+                margin-bottom: 0;
+            }
+        }
+
+        @media only screen and (max-width: $bp-medium) { 
+            flex: 1;
         }
     }
 
@@ -160,6 +173,11 @@
         align-items: center;
         position: relative;
         z-index: 2; /*z-index only works if we have a position specified */
+
+        @media only screen and (max-width: $bp-medium) { 
+            justify-content: center;
+            padding: 2rem;
+        }
     }
 
     &__icon {
@@ -175,6 +193,10 @@
     text-align: center;
     padding: 2.5rem;
     color: var(--colo-grey-light-4);
+
+    @media only screen and (max-width: $bp-medium) { 
+        display: none;
+    }
 }
 
 /* GALLERY */
@@ -352,6 +374,11 @@
         margin-right: auto;
     }
 
+    .recommend__images {
+        display: flex;  // instead of using many media queries for fixing all images side by side, we set parent to flex,
+                        // so they always will be next to each other
+    }
+
     &__photo {
         height: 4rem;
         width: 4rem;
@@ -360,7 +387,7 @@
         box-sizing: content-box;    /*make image include the 3px border, otherwise image looks bigger because of the extra border */
         
         &:not(:last-child) {
-            margin-right: -1.15rem;
+            margin-right: -2rem;
         }
     }
 }
@@ -373,6 +400,11 @@
     margin-bottom: 3.5rem;
     position: relative;
     overflow: hidden;
+
+    @media only screen and (max-width: $bp-medium) { 
+        padding: 2rem;
+        margin-bottom: 3rem;
+    }
 
     &__text {
         margin-bottom: 2rem;
@@ -430,6 +462,10 @@
 .cta {
     padding: 3.5rem 0;
     text-align: center;
+
+    @media only screen and (max-width: $bp-medium) { 
+        padding: 2.5rem 0;
+    }
 
     &__book-now {
         text-transform: uppercase;
