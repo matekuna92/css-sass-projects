@@ -35,9 +35,11 @@ Grey dark 3: #999
     --box-shadow-light: 0 2rem 5rem rgba(0, 0, 0, .08);
 }
 
-    $bp-largest: 75em;  // 1200px - 1200/16 = 75
-    $bp-large: 68.75em; // 1100 / 16 = 68.75  (1100 was the breakpoint where text was too big, and appeared in new line
-    $bp-medium: 56.25em;        // breakpoint at 900px: 900/16 =
+    $bp-largest: 75em;      // 1200px - 1200/16 = 75
+    $bp-large: 68.75em;     // 1100 / 16 = 68.75  (1100 was the breakpoint where text was too big, and appeared in new line
+    $bp-medium: 56.25em;    // breakpoint at 900px: 900/16 = 56.25
+    $bp-small: 37.5em;      // breakpoint at 600px
+    $bp-smallest: 31.25em;  // breakpoint at 500px
     
 
 * {
